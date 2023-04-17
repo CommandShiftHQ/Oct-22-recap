@@ -19,7 +19,7 @@ function App() {
       <InputForm setTodos={setTodos} />
       <div>
         {todos.map((todo) => (
-          <Todo description={todo} />
+          <Todo key={todo} description={todo} />
         ))}
       </div>
     </div>

@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import "./styles/app.css";
+import Todo from "./components/Todo";
+import InputForm from "./components/InputForm";
 
 function App() {
+  const [todos, setTodos] = useState([]);
+
+  useEffect(() => {
+    console.log("hello");
+
+    return () => {
+      console.log("goodbye");
+    };
+  }, [todos]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <InputForm setTodos={setTodos} />
+      <div>
+        {todos.map((todo) => (
+          <Todo description={todo} />
+        ))}
+      </div>
     </div>
   );
 }
